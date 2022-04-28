@@ -1,0 +1,21 @@
+<div class="card mb-3">
+    <div class="row">
+        <div class="col-md-4">
+            <a routerLink="/cakedetails/{{cakeData.cakeid}}">
+                <img [src]="cakeData.image" class="card-img-top" alt="cake image" style="object-fit: cover; height: 15rem">
+            </a>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body" style="height: 15rem; overflow: hidden">
+                <h5 class="card-title">{{cakeData.name}}</h5>
+                <h6 class="card-subtitle"><strong>Flavour: </strong>{{cakeData.flavour}}</h6>
+                <span class="badge bg-warning" *ngIf="cakeData.eggless">Eggless</span>
+                <p style="height: 3em; text-overflow: ellipsis; overflow: hidden"><small class="card-text">{{cakeData.description}}</small></p>
+                <a *ngIf="!isAddingToCart" style="float: right" class="btn btn-success" (click)=addToCart()>Add to card</a>
+                <a *ngIf="isAddingToCart" style="float: right" class="btn btn-success disabled">Adding to card</a>
+                <p class="card-text"><small class="text-muted">{{cakeData.ratings}}/5 rating based on {{cakeData.reviews}} reviews.</small></p>
+                <h6 class="card-text">{{cakeData.price | currency: "INR"}}</h6>
+            </div>
+        </div>
+    </div>
+</div>

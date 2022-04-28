@@ -1,0 +1,7 @@
+<ngx-ui-loader></ngx-ui-loader>
+<div class="container my-5">
+    <div style="width: 70%" class="mx-auto">
+        <h6 class="mb-4">{{cakeList.length}} results found.</h6>
+        <app-search-card *ngFor="let cake of cakeList" [cakeData]="cake"></app-search-card>
+    </div>
+</div>

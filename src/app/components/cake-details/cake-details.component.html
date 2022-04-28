@@ -1,0 +1,44 @@
+<ngx-ui-loader></ngx-ui-loader>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="cakeDetails.image" alt="Cake Image" width="100%">
+        </div>
+        <div class="col-md-8">
+            <h3>{{cakeDetails.name}}</h3>
+            <small class="text-muted">Rating - {{cakeDetails.ratings}}/5</small><br>
+            <small class="text-muted">{{cakeDetails.reviews}} reviews</small><br>
+            <p class="fw-bold">{{cakeDetails.price | currency:'INR'}}</p>
+            <p>{{cakeDetails.description}}</p>
+
+
+            <table class="table table-borderless">
+                <tr>
+                    <th scope="row">Flavour</th>
+                    <td>{{cakeDetails.flavour}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ingredients</th>
+                    <td>{{cakeDetails.ingredients}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Occassion</th>
+                    <td>{{cakeDetails.type}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Weight</th>
+                    <td>{{cakeDetails.weight}} kg</td>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <td><small class="badge bg-success" *ngIf="cakeDetails.eggless">Eggless</small></td>
+                </tr>
+            </table>
+
+
+
+            <a *ngIf="!isAddingToCart" class="btn btn-primary" (click)=addToCart()>Add to card</a>
+            <a *ngIf="isAddingToCart" class="btn btn-primary disabled">Adding to card</a>
+        </div>
+    </div>
+</div>

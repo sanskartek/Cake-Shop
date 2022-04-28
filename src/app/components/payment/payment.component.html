@@ -1,0 +1,63 @@
+<ngx-ui-loader></ngx-ui-loader>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 container">
+            <h3>Your cart is</h3>
+            <table class="table table-bordered container my-5">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let eachItem of cartItems; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{eachItem.name}}</td>
+                        <td>{{eachItem.price | currency: "INR"}}</td>
+                        <td>{{eachItem.quantity}}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Total Cost</th>
+                        <td colspan="2">{{totalCost | currency: "INR"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6 container">
+            <h3>Your billing details are:</h3>
+            <table class="table table-borderless container my-5">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{getAddressDetails().name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{getAddressDetails().address}}</td>
+                    </tr>
+                    <tr>
+                        <th>City</th>
+                        <td>{{getAddressDetails().city}}</td>
+                    </tr>
+                    <tr>
+                        <th>Pincode</th>
+                        <td>{{getAddressDetails().pincode}}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{getAddressDetails().phone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <p class="text-danger text-center">Only Cash on Delivery option is available at the moment.</p>
+        <button class="btn btn-success" disabled *ngIf="!cakeOrder.name && !placingOrder">Place Order</button>
+        <button class="btn btn-success" (click)="placeOrder()" *ngIf="cakeOrder.name && !placingOrder">Place Order</button>
+        <button class="btn btn-success" disabled *ngIf="placingOrder">Placing Order</button>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container p-5 mx-auto my-5 bg-dark text-light rounded-3" style="width: 30%">
+
+    <h1>Signup Here</h1>
+    <form [formGroup]="signupForm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input name="name" formControlName="nameFormControl" type="text" class="form-control" id="name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input name="email" formControlName="emailFormControl" type="email" class="form-control" id="email">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" formControlName="passwordFormControl" type="password" class="form-control" id="password">
+        </div>
+        <button *ngIf="!isSubmitting" (click)="logInfo()" type="submit" class="btn btn-success">Signup</button>
+        <button *ngIf="isSubmitting" disabled type="submit" class="btn btn-success">Please Wait</button>
+        <div class="mt-3 alert alert-danger text-break" role="alert" *ngIf="message.length > 0">{{message}}</div>
+    </form>
+    <div class="form-text mt-3"><a class="text-success text-decoration-none" routerLink="/login">Already registered? Login here</a></div>
+
+</div>

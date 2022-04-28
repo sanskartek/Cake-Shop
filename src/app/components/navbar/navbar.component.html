@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">{{projectTitle}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex mx-2 me-auto">
+                <input name="search" [(ngModel)]="searchText" class="form-control mx-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" (click)="search()" type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
+            </form>
+
+            <button class="btn text-light" routerLink="/addcake" *ngIf="isAdmin">Add New Cake</button>
+            <button class="btn text-light" *ngIf="isLoggedIn" routerLink="/myorders">My Orders</button>
+            <button class="btn btn-warning mx-2 position-relative" *ngIf="isLoggedIn" routerLink="/cart">
+                <fa-icon [icon]="faShoppingCart"></fa-icon>
+                <span *ngIf="numberOfCartItems > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{numberOfCartItems}}</span>
+            </button>
+            <button class="btn btn-success mx-2" routerLink="/login" *ngIf="!isLoggedIn">Login</button>
+            <button class="btn btn-success mx-2" routerLink="/signup" *ngIf="!isLoggedIn">Signup</button>
+            <button class="btn btn-danger mx-2" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+
+        </div>
+    </div>
+</nav>

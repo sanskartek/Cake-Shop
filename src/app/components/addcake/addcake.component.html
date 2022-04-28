@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <form style="width: 50%" class="mx-auto border p-5 rounded-3">
+        <fieldset>
+            <legend>Cake Image</legend>
+            <input type="file" class="form-control" name="image" id="image" (change)="getFile($event)">
+
+            <button *ngIf="!isUploaded && file==null" class="mt-3 btn btn-primary" disabled>Upload</button>
+            <button *ngIf="!isUploaded && file!=null" class="mt-3 btn btn-primary" (click)="upload()">Upload</button>
+            <button *ngIf="isUploaded" class="mt-3 btn btn-primary" disabled>Uploaded</button>
+        </fieldset>
+    </form>
+
+    <form style="width: 50%" *ngIf="isUploaded" #cakeForm="ngForm" class="mx-auto border p-5 rounded-3 mt-5">
+        <fieldset>
+            <legend>Cake Details</legend>
+            <label for="name" class="form-label mt-3">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="cakeDetails.name" #name="ngModel" required>
+            <div class="text-danger" *ngIf="name.errors && cakeForm.submitted">
+                <label *ngIf="name.errors['required']">Name is required.</label>
+            </div>
+
+            <label for="price" class="form-label mt-3">Price</label>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" id="price" name="price" [(ngModel)]="cakeDetails.price" #price="ngModel" required>
+                <span class="input-group-text">INR</span>
+            </div>
+            <div class="text-danger" *ngIf="price.errors && cakeForm.submitted">
+                <label *ngIf="price.errors['required']">Price is required.</label>
+            </div>
+
+            <label for="description" class="form-label mt-3">Description</label>
+            <input type="text" class="form-control" id="description" name="description" [(ngModel)]="cakeDetails.description" #description="ngModel">
+
+            <label for="ingredients" class="form-label mt-3">Ingredients (comma separated)</label>
+            <input type="text" class="form-control" id="ingredients" name="ingredients" [(ngModel)]="ingredientsString" #ingredients="ngModel">
+
+            <label for="type" class="form-label mt-3">Type</label>
+            <input type="text" class="form-control" id="type" name="type" [(ngModel)]="cakeDetails.type" #type="ngModel">
+
+            <label for="weight" class="form-label mt-3">Weight</label>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="cakeDetails.weight" #weight="ngModel" required>
+                <span class="input-group-text">KG (max 5)</span>
+            </div>
+            <div class="text-danger" *ngIf="weight.errors && cakeForm.submitted">
+                <label *ngIf="weight.errors['required']">Weight is required.</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="eggless" name="eggless" [(ngModel)]="cakeDetails.eggless">
+                <label class="form-check-label" for="eggless">Eggless</label><br>
+            </div>
+
+            <div class="mt-3 alert alert-danger text-break" role="alert" *ngIf="message.length > 0">{{message}}</div>
+            <button *ngIf="!cakeForm.valid || !isUploaded" type="submit" class="mt-3 btn btn-primary" disabled>Submit</button>
+            <button *ngIf="cakeForm.valid && isUploaded" type="submit" class="mt-3 btn btn-primary" (click)="submit()">Submit</button>
+
+            <div class="text-danger" *ngIf="!isUploaded">
+                <label>First click on Upload to upload the image.</label>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

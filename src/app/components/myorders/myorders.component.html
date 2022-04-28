@@ -1,0 +1,43 @@
+<ngx-ui-loader></ngx-ui-loader>
+<div class="container mt-5" style="width:70%">
+    <h4 class="my-5">Previous orders</h4>
+    <div *ngFor="let eachOrder of cakeOrders.cakeorders" class="border rounded-3 p-5 my-2 mx-auto">
+        <p style="float:right" class="text-success" *ngIf="eachOrder.pending">This order is pending.</p>
+        <p style="float:right" class="text-success" *ngIf="eachOrder.completed">This order is completed.</p>
+        <p><strong>Order Date:</strong> {{eachOrder.orderdate | date}}</p>
+        <p><strong>Payment Mode:</strong> {{eachOrder.mode | titlecase}}</p>
+        <p><strong>Order ID:</strong> {{eachOrder.orderid}}</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" colspan="2">Quantity</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eachItem of eachOrder.cakes; let i = index">
+                    <td>{{i+1}}</td>
+                    <td><img [src]="eachItem.image" alt="cake image" style="height:5rem"></td>
+                    <td>{{eachItem.name}}</td>
+                    <td>{{eachItem.price | currency: "INR"}}</td>
+                    <td>{{eachItem.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h5 style="float:right"><strong>Total Price:</strong> {{eachOrder.price | currency:"INR"}}</h5>
+        <h5>Delivery Details</h5>
+        <ul class="list-group-flush" style="list-style: none;">
+            <li class="list-group-item-action"><strong>Name: </strong> {{eachOrder.name}}</li>
+            <li class="list-group-item-action"><strong>Address: </strong> {{eachOrder.address}}</li>
+            <li class="list-group-item-action"><strong>City: </strong> {{eachOrder.city}}</li>
+            <li class="list-group-item-action"><strong>Pincode: </strong> {{eachOrder.pincode}}</li>
+            <li class="list-group-item-action"><strong>Phone: </strong> {{eachOrder.phone}}</li>
+            <li class="list-group-item-action"><strong>Email: </strong> {{eachOrder.email}}</li>
+        </ul>
+
+    </div>
+</div>

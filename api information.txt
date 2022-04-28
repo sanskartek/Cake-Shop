@@ -1,0 +1,84 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+base api - https://apifromashu.herokuapp.com/api
+
+
+to get all the cakes 
+url - /allcakes
+method - get
+
+to get cake details 
+url - /cake/cakeid
+method - get
+
+to get search results -
+url --- /searchcakes?q=searchtext
+method -- get
+
+Registration 
+url --  /register
+method -- post
+body - {email,name,password}
+
+Login 
+URL - -- /login
+method-- post
+body - {email,password}
+
+FORgot password
+url - /recoverpassword
+method - post
+body - {email}
+
+Addcakteo cart
+url - /addcaketocart
+method:post
+body - {name,cakeid,price,image,weight}
+
+For increasing quantity
+url - /addcaketocart
+method:post
+body - {name,cakeid,price,image,weight}
+
+For remove from cart 
+url - /removecakefromcart
+method:post
+body - {cakeid}
+
+For decreasing quantity
+url - /removeonecakefromcart
+method:post
+body - {cakeid}
+
+For getting cart items 
+url - /cakecart
+method:post
+body - {}
+
+for placing order 
+url - /addcakeorder
+method -post
+body - {name,address,city,pincode,phone,cakes,price}
+
+for previous orders
+url - /cakeorders
+method -post
+body -{}
+
+image upload api -- 
+/upload
+images are sent into form data 
+key of form data - file 
+
+for adding a new cake 
+url - /addcake
+method -post
+bpdy -- {
+    name,
+    price,
+    description,
+    ingredients:[],
+    image: url coming from server 
+    type,
+    weight
+    eggless
+}

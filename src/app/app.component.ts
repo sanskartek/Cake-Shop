@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AshuService } from 'src/app/ashu.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tekangularapp';
+
+  constructor(private ashuService: AshuService) {
+    if (localStorage["token"]) {
+      this.ashuService.isLoggedIn = true;
+    }
+    if (this.ashuService.adminEmails.includes(localStorage["email"])) {
+      this.ashuService.isAdmin = true;
+    }
+  }
 }

@@ -1,0 +1,10 @@
+<div class="card m-3" style="display: inline-block; width: 18rem;">
+    <a routerLink="/cakedetails/{{cakeData.cakeid}}"><img [src]="cakeData.image" class="card-img-top" alt="cake image" style="height: 10rem; object-fit: cover;"></a>
+    <div class="card-body">
+        <h6 class="card-title">{{cakeData.name}}</h6>
+        <p class="card-text">Rs. {{cakeData.price}}</p>
+        <p class="card-text">{{cakeData.details}}</p>
+        <a *ngIf="!isAddingToCart" class="btn btn-primary" (click)=addToCart()>Add to card</a>
+        <a *ngIf="isAddingToCart" class="btn btn-primary disabled">Adding to card</a>
+    </div>
+</div>

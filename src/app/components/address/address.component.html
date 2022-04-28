@@ -1,0 +1,44 @@
+<div class="container">
+    <form style="width: 50%" #addressForm="ngForm" (submit)="addressForm.valid && addAddress()" class="mx-auto border p-5 rounded-3">
+        <fieldset>
+            <legend>Delivery Details</legend>
+
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="orderDetails.name" #name="ngModel" required>
+            <div class="text-danger" *ngIf="name.errors && addressForm.submitted">
+                <label *ngIf="name.errors['required']">Name is required.</label>
+            </div>
+
+
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address" [(ngModel)]="orderDetails.address" #address="ngModel" required>
+            <div class="text-danger" *ngIf="address.errors && addressForm.submitted">
+                <label *ngIf="address.errors['required']">Address is required.</label>
+            </div>
+
+
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city" [(ngModel)]="orderDetails.city" #city="ngModel" required>
+            <div class="text-danger" *ngIf="city.errors && addressForm.submitted">
+                <label *ngIf="city.errors['required']">City is required.</label>
+            </div>
+
+
+            <label for="pincode" class="form-label">Pincode</label>
+            <input type="text" class="form-control" id="pincode" name="pincode" [(ngModel)]="orderDetails.pincode" #pincode="ngModel" required>
+            <div class="text-danger" *ngIf="pincode.errors && addressForm.submitted">
+                <label *ngIf="pincode.errors['required']">Pincode is required.</label>
+            </div>
+
+
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="orderDetails.phone" #phone="ngModel" required>
+            <div class="text-danger" *ngIf="phone.errors && addressForm.submitted">
+                <label *ngIf="phone.errors['required']">Phone is required.</label>
+            </div>
+
+
+            <button type="submit" class="mt-5 btn btn-primary">Proceed</button>
+        </fieldset>
+    </form>
+</div>
